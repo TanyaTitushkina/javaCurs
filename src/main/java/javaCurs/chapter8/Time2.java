@@ -116,4 +116,31 @@ public class Time2 {
                 ((getHour() == 0 || getHour() == 12) ? 12 : getHour() % 12),
                 getMinute(), getSecond(), (getHour() < 12 ? "AM" : "PM"));
     }
+
+    //8.7 (Enhancing Class Time2)
+    //increments time stored in a Time2 object by 1 second
+    public void tick() {
+        int second = getSecond();
+        if(second == 59) {
+            setSecond(0);
+            incrementMinute();
+        } else setSecond(second + 1);;
+    }
+
+    //increments minute by 1
+    public void incrementMinute() {
+        int minute = getMinute();
+        if(minute == 59) {
+            setMinute(0);
+            incrementHour();
+        } else setMinute(minute + 1);
+    }
+
+    //increments hour by 1
+    public void incrementHour() {
+        int hour = getHour();
+        if(hour == 23) {
+            setHour(0);
+        } else setHour(hour + 1);
+    }
 }
